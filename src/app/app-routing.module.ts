@@ -1,3 +1,4 @@
+import { RequestsComponent } from './pages/requests/requests.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
@@ -10,7 +11,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'sign',component:SignComponent},
   {path:'dashboard',component:HomeComponent},
-  {path:'add',component:AddDocumentComponent}
+  {path:'add',component:AddDocumentComponent},
+  {path:'request',component:RequestsComponent}
 ];
 
 @NgModule({

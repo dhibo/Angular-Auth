@@ -1,15 +1,15 @@
-<mat-toolbar color="pink" class="navbar">
-    <img src="./assets/images/logo.png" [routerLink]="'/dashboard'" alt="Your Application Logo" height="30" class="logo" />
-    <span>Dashboard</span>
-    <span class="example-spacer"></span>
-    <div class="nav-buttons">
-      <ng-container *ngIf="isLoggedIn; else loginButtons">
-        <button mat-button (click)="logout()" class="logout-button">Logout</button>
-      </ng-container>
-      <ng-template #loginButtons>
-        <button mat-button [routerLink]="'/login'" class="login-button">Login</button>
-        <button mat-button [routerLink]="'/sign'" class="register-button">Register</button>
-      </ng-template>
-    </div>
-  </mat-toolbar>
-  
+<mat-toolbar  class="navbar flex justify-between items-center">
+  <a routerLink="/dashboard" class="flex items-center">
+    <img src="./assets/images/logo.png" alt="Your Application Logo" width="40px" height="40px" class="logo" />
+    <span class="ml-2 font-bold text-lg">Dashboard</span>
+  </a>
+  <div class="nav-buttons flex items-center">
+    <ng-container *ngIf="isLoggedIn; else loginButtons">
+      <button mat-raised-button color="accent" (click)="logout()" class="logout-button mr-2">Logout</button>
+    </ng-container>
+    <ng-template #loginButtons>
+      <a routerLink="/login" mat-button class="login-button mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Login</a>
+      <a routerLink="/sign" mat-button class="register-button bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Register</a>
+    </ng-template>
+  </div>
+</mat-toolbar>

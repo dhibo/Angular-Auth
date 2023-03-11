@@ -16,10 +16,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {  MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { AppRoutingModule } from '../app-routing.module';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-    NavComponent
+    NavComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,

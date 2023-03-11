@@ -1,37 +1,26 @@
-<div class="document-list">
-  <h2 class="mat-h2">My Documents</h2>
-  <mat-divider></mat-divider>
-  <div *ngIf="documents && documents.length > 0; else noDocuments">
-    <div *ngFor="let document of documents">
-      <mat-card class="document-card">
-        <mat-card-content>
-          <div class="document-title row">
-            <h3 class="mat-h3">{{ document.title }}</h3>
-            <button mat-icon-button color="accent" style=""aria-label="Modify" (click)="editDocument(document)">
-              <mat-icon>edit</mat-icon>
-            </button>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4" *ngFor="let document of documents">
+        <div class="card">
+          <div class="position-relative">
+            <img [src]="getDocumentImage(document)" class="card-img-top" alt="Document Image" style="max-height: 200px;max-width: 200;" />
+            <i *ngIf="document.privacy === 'Private'" class="bi bi-person-fill-lock position-absolute top-0 end-0 text-black" style="font-size: 1.5rem;"></i>
+            <i *ngIf="document.privacy === 'Public'" class="bi bi-globe2 position-absolute top-0 end-0 text-black" style="font-size: 1.5rem;"></i>
           </div>
-          <div class="row" style="width: 12rem;">
-            <mat-icon >public</mat-icon>
-            <h3>{{ document.privacy }}</h3>
+          <div class="card-body">
+            <p class="card-text text-success "><i class="bi bi-person-fill"></i> <small class="text-success">{{ document.owner }}</small></p>
+            <h5 class="card-title">{{ document.title }}</h5>
+            <p class="card-text">{{ document.description }}</p>
+            <p class="card-text"><strong>Type:</strong> {{ document.type }}</p>
+            <p class="card-text"><strong>Privacy:</strong> {{ document.privacy }}</p>
           </div>
-          <p class="mat-body">{{ document.description }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button color="primary" (click)="downloadDocument(document)">Download</button> 
-          <button mat-button color="warn">Delete</button>
-        </mat-card-actions>
-      </mat-card>
-      <mat-divider></mat-divider>
-    </div>
-  </div>
-  <ng-template class="nodocs" #noDocuments>
-    <div class="no-documents">
-      <img src="./assets/images/nodocs.png" class="image" alt="No documents found" >
-      <h2 style="color:rgb(66, 66, 66) ;  text-align: center;font-size : larger ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 1600;">Sorry We haven't any documents Yet ! </h2>
-      <div class="button-row">
-        <button mat-raised-button  class="button" color="primary" routerLink="/add">Add Document</button>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <button class="btn btn-link text-secondary"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-link text-danger"><i class="bi bi-trash"></i></button>
+            <a [href]="downloadDocument(document)" class="text-secondary"><i class="bi bi-download"></i></a>
+          </div>
+        </div>
       </div>
     </div>
-  </ng-template>
-</div>
+  </div>
+  

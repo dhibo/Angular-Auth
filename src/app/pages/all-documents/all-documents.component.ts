@@ -8,7 +8,49 @@ import * as saveAs from 'file-saver';
   styleUrls: ['./all-documents.component.css']
 })
 export class AllDocumentsComponent {
-  documents!: any[];
+  documents= [
+    {
+      title: "Document 1",
+      description: "This is the first document",
+      type: "PDF",
+      privacy: "Public",
+      owner: "John Doe",
+      image: "https://via.placeholder.com/350x150",
+    },
+    {
+      title: "Document 2",
+      description: "This is the second document",
+      type: "DOCX",
+      privacy: "Private",
+      owner: "Jane Doe",
+      image: "https://via.placeholder.com/350x150",
+    },
+    {
+      title: "Document 3",
+      description: "This is the third document",
+      type: "TXT",
+      privacy: "Public",
+      owner: "Bob Smith",
+      image: "https://via.placeholder.com/350x150",
+    },
+    {
+      title: "Document 3",
+      description: "This is the third document",
+      type: "TXT",
+      privacy: "Public",
+      owner: "Bob Smith",
+      image: "https://via.placeholder.com/350x150",
+    },
+    {
+      title: "Document 3",
+      description: "This is the third document",
+      type: "TXT",
+      privacy: "Public",
+      owner: "Bob Smith",
+      image: "https://via.placeholder.com/350x150",
+    }
+  ];
+  
   blob : any ;
 
   constructor(private documentservice: DocumentService  ) { }
@@ -32,5 +74,13 @@ export class AllDocumentsComponent {
     });
   }
   editDocument(document : any){}
-
+  getDocumentImage(document: any): string {
+    if (document.type === 'pdf') {
+      return './assets/images/pdf.png';
+    } else(document.type === 'xml') 
+      return './assets/images/xml.jpg';
+    
+    
+  }
+  
 }

@@ -18,6 +18,7 @@ import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { DndDirective } from './directives/dnd.directive';
+import {MatDialogModule} from '@angular/material/dialog'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { DndDirective } from './directives/dnd.directive';
     MatCardModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

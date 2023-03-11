@@ -28,7 +28,12 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {MatSelectModule} from '@angular/material/select'; 
 import { MatListModule } from '@angular/material/list';
-import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { RequestsComponent } from './requests/requests.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component'; 
+
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -36,7 +41,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HomeComponent,
     AddDocumentComponent,
     ListDocumentsComponent,
-    AllDocumentsComponent
+    AllDocumentsComponent,
+    RequestsComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +69,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgxDropzoneModule,
     MatSelectModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
 })
 export class PagesModule { }

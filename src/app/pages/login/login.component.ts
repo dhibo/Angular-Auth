@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,16 +16,21 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   data : any ; 
   private readonly TOKEN_KEY = 'myapp_token';
-    constructor(private formBuilder: FormBuilder, private auth  : AuthService,private snackBar : MatSnackBar , private router : Router) { }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email], ],
       password: ['', Validators.required]
     });
   }
 
-  
   onSubmit() {
     if (this.loginForm.valid) {
       const data = {
@@ -54,9 +62,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-    
-      onCancel() {
-        this.loginForm.reset();
-      }
+  onCancel() {
+    this.loginForm.reset();
+  }
 
-    }
+  
+}

@@ -1,47 +1,57 @@
-<div class="form-container">
-  <mat-card class="form-card">
-    <mat-card-title>Document Add Form</mat-card-title>
-    <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline" >
-          <mat-label>Title</mat-label>
-          <input matInput formControlName="title" required>
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline" >
-          <mat-label>Description</mat-label>
-          <textarea matInput formControlName="description" required></textarea>
-        </mat-form-field>
-  
-        <div class="row">
-          <mat-label apperance="outline"><b>Type of Document</b></mat-label>
-          <mat-radio-group formControlName="type" required>
-            <mat-radio-button value="pdf">PDF</mat-radio-button>
-            <mat-radio-button value="xml">Xml</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <div class="row">
-          <mat-label apperance="outline"><b>Privacy</b> </mat-label>
-          <mat-radio-group formControlName="privacy" required>
-            <mat-radio-button value="public">Public</mat-radio-button>
-            <mat-radio-button value="Private">private</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <div class="file-uploader" style="width: 600px; height: 200px; margin: 0 auto;" ngx-dropzone (change)="onSelect($event)">
-          <ngx-dropzone-label>
-            <img src="./assets/images/add_file.png" width="200px" alt="Your Image Alt Text">
-            <p>Drag and drop a file here</p>
-          </ngx-dropzone-label>
-          <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-          </ngx-dropzone-preview>
-        </div>
-        <div class="row">
-          <button style="margin: 1rem;" mat-raised-button color="warn" type="reset">Cancel</button>
-          <button mat-raised-button color="primary" type="submit">Submit</button>
-        </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
-  
+<div class="min-vh-100 bg-gray-100 py-5 d-flex flex-column justify-content-center align-items-center">
+  <div class="position-relative py-3 max-w-xl mx-auto">
+    <div class="position-relative px-5 py-4 bg-white mx-4 mx-md-0 shadow rounded-3xl p-sm-5">
+      <div class="max-w-md mx-auto">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="d-flex align-items-center gap-3">
+            <div class="h-14 w-14 bg-yellow-200 rounded-circle d-flex justify-content-center align-items-center text-yellow-500 text-2xl font-mono">
+              <img src="./assets/images/logo.png">
+            </div>
+            <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
+              <h2 class="fw-normal mb-0">Create a Document</h2>
+              <p class="text-sm text-gray-500 font-normal mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="py-4">
+            <div class="py-3">
+              <label for="title" class="form-label mb-0">Document Title</label>
+              <input formControlName="title" type="text" id="title" class="form-control py-3" placeholder="Document title">
+            </div>
+            <div class="py-3">
+              <label for="description" class="form-label mb-0">Description</label>
+              <input formControlName="description" type="text" textarea id="description" class="form-control py-3" placeholder="Optional">
+            </div>
+            <div class="py-3">
+              <label for="type" class="form-label mb-0">Type of Document</label>
+              <select formControlName="type" id="type" class="form-select py-2">
+                <option value="" disabled selected>Select type of document</option>
+                <option value="pdf">PDF</option>
+                <option value="xml">XML</option>
+              </select>
+            </div>
+            <div class="py-3">
+              <label for="privacy" class="form-label mb-0">Privacy</label>
+              <select formControlName="privacy" id="privacy" class="form-select py-2">
+                <option value="" disabled selected>Select privacy</option>
+                <option value="private">Private</option>
+                <option value="public">Public</option>
+              </select>
+            </div>
+            <div class="py-3">
+              <label for="file" class="form-label mb-0">Choose File</label>
+              <ngx-dropzone [maxFileSize]="1024" (change)="onSelect($event)">
+                <ngx-dropzone-label>
+                  <img src="./assets/images/add_file.png" width="200px" alt="Your Image Alt Text">
+                  <p>Drag and drop a file here</p>
+                </ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

@@ -12,13 +12,12 @@ export class SignComponent {
   signInForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,private auth:AuthService , private router : Router) { }
-
   ngOnInit(): void {
     this.signInForm = this.formBuilder.group({
       first_name : ['' ,[Validators.required]],
       last_name: ['' ,[Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
